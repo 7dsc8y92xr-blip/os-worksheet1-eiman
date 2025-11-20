@@ -1,1 +1,6 @@
-
+*.o
+task1
+task1_2
+task2
+task3
+*.exe
