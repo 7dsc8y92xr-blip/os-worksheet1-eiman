@@ -1,30 +1,36 @@
+; Task 1 – Hard-coded addition (expected output: 10)
+
 %include "asm_io.inc"
 
 segment .data
-    x       dd 5          ; first integer
-    y       dd 7          ; second integer
-    result  dd 0          ; to store the sum
+    num1    dd 2       ; first number
+    num2    dd 3       ; second number
+    num3    dd 5       ; third number
 
 segment .text
     global asm_main
 
 asm_main:
-    ; standard function setup
     enter 0, 0
-    pusha
+    pusha                   ; save registers
 
-    ; load x and add y
-    mov     eax, [x]
-    add     eax, [y]
-    mov     [result], eax
+    ; -------------------------
+    ; Load the three numbers
+    ; -------------------------
+    mov eax, [num1]         ; eax = 2
+    add eax, [num2]         ; eax = 2 + 3
+    add eax, [num3]         ; eax = 2 + 3 + 5 = 10
 
-    ; print the result
-    mov     eax, [result]
-    call    print_int
-    call    print_nl
+    ; -------------------------
+    ; Print result (10)
+    ; -------------------------
+    call print_int
+    call print_nl
 
-    ; exit
+    ; -------------------------
+    ; Exit
+    ; -------------------------
     popa
-    mov     eax, 0
+    mov eax, 0
     leave
     ret
